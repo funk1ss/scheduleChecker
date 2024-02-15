@@ -1,0 +1,47 @@
+body{
+    background: #6366f1;
+}
+.leftToRight{
+    position: relative;
+    animation: slideFromLeft 0.5s ease-out;
+}
+@keyframes slideFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+button {
+    transition: transform 0.2s ease; /* Добавляем переход для свойства transform */
+  }
+  
+  button:active {
+    transform: translateY(-2px); /* Смещаем кнопку вверх на 2 пикселя */
+  }
+
+
+/* Стили для выпадающего меню */
+.dropdown-content {
+    display: none;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    animation: fadeInOut 0.3s ease forwards;
+  }
+  
+  /* Анимация для появления и исчезновения выпадающего меню */
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  /* Анимация для появления и исчезновения ссылок */
+  @keyframes fadeInOutLinks {
+
+  }
+
+.show{
+    display: block;
+}
