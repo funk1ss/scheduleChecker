@@ -16,7 +16,7 @@ const schedule = {
     "Среда": {
         "one": "[8:00] Способы программирования [310каб.]",
         "two": "[9:30] Код программирования [211каб.]",
-        "three": "[10:50] Культурология [106каб.]",
+        "three": "[11:00] Культурология [106каб.]",
         "four": "[12:50] -",
         "five": "[14:20] -"
     },
@@ -154,8 +154,8 @@ const nextDayInfo = () => {
 const todaysInfo = () => {
     let currentSchedule = schedule[currentDay()]
     let subjectsList = []
-    
     let counter = 0
+    
     for (let item in currentSchedule){
         counter++
         subjectsList.push(counter +". "+ currentSchedule[item])
