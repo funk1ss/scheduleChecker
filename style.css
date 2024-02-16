@@ -46,11 +46,3 @@ button {
     display: block;
 }
 
-.swal-text, .swal-title {
-  color: #fff; /* белый текст */
-}
-
-.swal-button {
-  background-color: #333; /* темный фон */
-  color: #fff; /* белый текст */
-}

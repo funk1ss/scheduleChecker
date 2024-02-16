@@ -100,7 +100,7 @@ const nextDayInfo = () => {
         Swal.fire({
             title: nextDay,
             icon: 'info',
-            confirmButtonText: 'С кайфом',
+            confirmButtonText: 'Кайф',
           })
     }
 
@@ -193,7 +193,7 @@ const todaysInfo = () => {
         Swal.fire({
             title: currentDay(),
             icon: 'info',
-            confirmButtonText: 'С кайфом',
+            confirmButtonText: 'Кайф',
           })
     }
 }
