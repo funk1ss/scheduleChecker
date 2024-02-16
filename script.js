@@ -58,6 +58,12 @@ const currentDay = () => {
         case "Friday":
             dayOfWeek = "Пятница";
             break;
+        case "Saturday":
+            dayOfWeek = "Суббота";
+            break;
+        case "Sunday":
+            dayOfWeek = "Воскресенье";
+            break;
     
         default:
             break;
@@ -66,11 +72,24 @@ const currentDay = () => {
     return dayOfWeek
 }
 
+function determineWeek(date) {
+    const startDate = new Date(date.getFullYear(), 0, 1); // Start of the year
+    const dayOfYear = Math.floor((date - startDate) / (24 * 60 * 60 * 1000)); // Day of the year
+    const week = Math.floor(dayOfYear / 7); // Week of the year
+
+    // If the week number is even, it's the right week, otherwise, it's the left week
+    if (week % 2 === 0) {
+        return "1 группа";
+    } else {
+        return "2 группа";
+    }
+}
 
 const nextDayInfo = () => {
     let nextDay
     let arrivingTime
     let endTime
+    const today = new Date();
     switch (currentDay()) {
         case "Понедельник":
             nextDay = "Вторник"
@@ -84,7 +103,15 @@ const nextDayInfo = () => {
         case "Четверг":
             nextDay = "Пятница"
             break;
-    
+        case "Пятница":
+            nextDay = "Суббота"
+            break;
+        case "Суббота":
+            nextDay = "Воскресенье"
+            break;
+        case "Воскресенье":
+            nextDay = "Понедельник"
+            break;
         default:
             nextDay = "Выходной"
             break;
@@ -98,9 +125,10 @@ const nextDayInfo = () => {
         subjectsList.push(counter +". "+ currentSchedule[item])
     }
 
-    if (nextDay == "Выходной"){
+    if (nextDay == "Суббота" || nextDay == "Воскресенье"){
         arrivingTime = "-"
     }
+    
     else if (!schedule[nextDay].one.includes("-")){
         arrivingTime = "8:00"
     }
@@ -115,7 +143,7 @@ const nextDayInfo = () => {
     }
 
 
-    if (nextDay == "Выходной"){
+    if (nextDay == "Суббота" || nextDay == "Воскресенье"){
         arrivingTime = "-"
     }
     else if (schedule[nextDay].four.includes("-")){
@@ -124,9 +152,12 @@ const nextDayInfo = () => {
     else if (schedule[nextDay].five.includes("-")){
         endTime = "14:10"
     }
+    else{
+        endTime = "15:40"
+    }
     
 
-    if (nextDay != "Выходной") {
+    if ((nextDay != "Суббота" && nextDay != "Воскресенье") && nextDay != "Понедельник") {
         let formattedSubjects = subjectsList.map(subject => {
             return subject.replace(/\[(.*?)\]/g, '<span class="text-green-500">[$1]</span>');
         });
@@ -136,10 +167,36 @@ const nextDayInfo = () => {
             html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
             icon: 'info',
             footer: 'Начало: ' + arrivingTime + "<br> Конец: " + endTime,
-            confirmButtonText: 'Ok',
+            confirmButtonText: 'OK',
         });
     }
+    else if (nextDay == "Понедельник" && determineWeek(today) == "1 группа") {
+        let formattedSubjects = subjectsList.map(subject => {
+            return subject.replace(/\[(.*?)\]/g, '<span class="text-green-500">[$1]</span>');
+        });
     
+        Swal.fire({
+            title: currentDay(),
+            html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
+            icon: 'info',
+            footer: 'ДЕНЬ ПРАКТИКИ' + '<br>Начало: ' +'['+ arrivingTime +'] '+ determineWeek(today) +' [11:00] 2 группа'+ "<br> Конец: " + endTime ,
+            confirmButtonText: 'OK',
+        });
+    }
+
+    else if (nextDay == "Понедельник" && determineWeek(today) == "2 группа") {
+        let formattedSubjects = subjectsList.map(subject => {
+            return subject.replace(/\[(.*?)\]/g, '<span class="text-green-500">[$1]</span>');
+        });
+    
+        Swal.fire({
+            title: nextDay,
+            html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
+            icon: 'info',
+            footer: 'ДЕНЬ ПРАКТИКИ' + '<br>Начало: ' +'['+ arrivingTime +'] '+ determineWeek(today) +' [11:00] 1 группа'+ "<br> Конец: " + endTime ,
+            confirmButtonText: 'OK',
+        });
+    }
     else{
         Swal.fire({
             title: nextDay,
@@ -155,13 +212,14 @@ const todaysInfo = () => {
     let currentSchedule = schedule[currentDay()]
     let subjectsList = []
     let counter = 0
-    
+    const today = new Date();
+
     for (let item in currentSchedule){
         counter++
         subjectsList.push(counter +". "+ currentSchedule[item])
     }
 
-    if (currentDay() == "Выходной"){
+    if (currentDay() == "Суббота" || currentDay() == "Воскресенье"){
         arrivingTime = "-"
     }
     else if (!schedule[currentDay()].one.includes("-")){
@@ -177,7 +235,7 @@ const todaysInfo = () => {
         arrivingTime = "12:20"
     }
 
-    if (currentDay() == "Выходной"){
+    if (currentDay() == "Суббота" || currentDay() == "Воскресенье"){
         arrivingTime = "-"
     }
     else if (schedule[currentDay()].four.includes("-")){
@@ -190,7 +248,7 @@ const todaysInfo = () => {
         endTime = "15:40"
     }
 
-    if (currentDay() != "Выходной") {
+    if ((currentDay() != "Суббота" && currentDay() != "Воскресенье") && currentDay() != "Понедельник") {
         let formattedSubjects = subjectsList.map(subject => {
             return subject.replace(/\[(.*?)\]/g, '<span class="text-green-500">[$1]</span>');
         });
@@ -200,9 +258,38 @@ const todaysInfo = () => {
             html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
             icon: 'info',
             footer: 'Начало: ' + arrivingTime + "<br> Конец: " + endTime,
-            confirmButtonText: 'Ok',
+            confirmButtonText: 'OK',
         });
     }
+
+    else if (currentDay() == "Понедельник" && determineWeek(today) == "1 группа") {
+        let formattedSubjects = subjectsList.map(subject => {
+            return subject.replace(/\[(.*?)\]/g, '<span class="text-green-500">[$1]</span>');
+        });
+    
+        Swal.fire({
+            title: currentDay(),
+            html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
+            icon: 'info',
+            footer: 'ДЕНЬ ПРАКТИКИ' + '<br>Начало: ' +'['+ arrivingTime +'] '+ determineWeek(today) +' [11:00] 2 группа'+ "<br> Конец: " + endTime ,
+            confirmButtonText: 'OK',
+        });
+    }
+
+    else if (currentDay() == "Понедельник" && determineWeek(today) == "2 группа") {
+        let formattedSubjects = subjectsList.map(subject => {
+            return subject.replace(/\[(.*?)\]/g, '<span class="text-green-500">[$1]</span>');
+        });
+    
+        Swal.fire({
+            title: currentDay(),
+            html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
+            icon: 'info',
+            footer: 'ДЕНЬ ПРАКТИКИ' + '<br>Начало: ' +'['+ arrivingTime +'] '+ determineWeek(today) +' [11:00] 1 группа'+ "<br> Конец: " + endTime ,
+            confirmButtonText: 'OK',
+        });
+    }
+
     else{
         Swal.fire({
             title: currentDay(),
@@ -211,3 +298,7 @@ const todaysInfo = () => {
           })
     }
 }
+
+
+
+// Example usage of the function
