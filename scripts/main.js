@@ -1,127 +1,23 @@
-const schedule = {
-    "Понедельник": {
-        "one": "[8:00] ИКТ [313каб.]",
-        "two": "[9:30] Способы программирования [310каб.]",
-        "three": "[11:00] Код программирования [211каб.]",
-        "four": "[12:50] Физическая культура",
-        "five": "[14:20] -"
-    },
-    "Вторник": {
-        "one": "[8:00] -",
-        "two": "[9:30] -",
-        "three": "[11:00] Способы программирования [310каб.]",
-        "four": "[12:50] Экономика [303каб.]",
-        "five": "[14:20] Делопроизовдство [104каб.]"
-    },
-    "Среда": {
-        "one": "[8:00] Способы программирования [310каб.]",
-        "two": "[9:30] Код программирования [211каб.]",
-        "three": "[11:00] Культурология [106каб.]",
-        "four": "[12:50] -",
-        "five": "[14:20] -"
-    },
-    "Четверг": {
-        "one": "[8:00] -",
-        "two": "[9:30] ИКТ [313каб.]",
-        "three": "[11:00] Экономика [303каб.]",
-        "four": "[12:50] Код программирования [211каб.]",
-        "five": "[14:20] Делопроизводство [104каб.]"
-    },
-    "Пятница": {
-        "one": "[8:00] Нейронные сети [308каб.]",
-        "two": "[9:30] Социология [106каб.]",
-        "three": "[11:00] Физическая культура",
-        "four": "[12:50] ИКТ [313каб.]",
-        "five": "[14:20] -"
-    }
-}
-
-const currentDay = () => {
-    const date = new Date();
-    const options = { weekday: 'long' };
-    let dayOfWeek = date.toLocaleString('en-US', options);
-    
-    
-    switch (dayOfWeek) {
-        case "Monday":
-            dayOfWeek = "Понедельник";
-            break;
-        case "Tuesday":
-            dayOfWeek = "Вторник";
-            break;
-        case "Wednesday":
-            dayOfWeek = "Среда";
-            break;
-        case "Thursday":
-            dayOfWeek = "Четверг";
-            break;
-        case "Friday":
-            dayOfWeek = "Пятница";
-            break;
-        case "Saturday":
-            dayOfWeek = "Суббота";
-            break;
-        case "Sunday":
-            dayOfWeek = "Воскресенье";
-            break;
-    
-        default:
-            break;
-    }
-
-    return dayOfWeek
-}
-
-function determineWeek(date) {
-    const startDate = new Date(date.getFullYear(), 0, 1); // Start of the year
-    const dayOfYear = Math.floor((date - startDate) / (24 * 60 * 60 * 1000)); // Day of the year
-    const week = Math.floor(dayOfYear / 7); // Week of the year
-
-    // If the week number is even, it's the right week, otherwise, it's the left week
-    if (week % 2 === 0) {
-        return "1 группа";
-    } else {
-        return "2 группа";
-    }
-}
-
 const nextDayInfo = () => {
     let nextDay
     let arrivingTime
     let endTime
     const today = new Date();
-    today.setDate(today.getDate() + 1); // Прибавляем один день
+    today.setDate(today.getDate() + 1);
 
-    switch (currentDay()) {
-        case "Понедельник":
-            nextDay = "Вторник"
-            break;
-        case "Вторник":
-            nextDay = "Среда"
-            break;
-        case "Среда":
-            nextDay = "Четверг"
-            break;
-        case "Четверг":
-            nextDay = "Пятница"
-            break;
-        case "Пятница":
-            nextDay = "Суббота"
-            break;
-        case "Суббота":
-            nextDay = "Воскресенье"
-            break;
-        case "Воскресенье":
-            nextDay = "Понедельник"
-            break;
-        default:
-            nextDay = "Выходной"
-            break;
-    }
+    let nextDayObj = {
+        "Понедельник": "Вторник",
+        "Вторник": "Среда",
+        "Четверг": "Пятница",
+        "Пятница": "Суббота",
+        "Воскресенье": "Понедельник",
+    } 
+    nextDay = nextDayObj[currentDay()]
     let currentSchedule = schedule[nextDay]
     let subjectsList = []
-    
     let counter = 0
+
+
     for (let item in currentSchedule){
         counter++
         subjectsList.push(counter +". "+ currentSchedule[item])
@@ -301,6 +197,6 @@ const todaysInfo = () => {
     }
 }
 
+alertOnMonday()
 
 
-// Example usage of the function
