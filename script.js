@@ -135,7 +135,7 @@ const nextDayInfo = () => {
             title: nextDay,
             html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
             icon: 'info',
-            footer: 'Пары начнутся в ' + arrivingTime,
+            footer: 'Начало: ' + arrivingTime + "<br> Конец: " + endTime,
             confirmButtonText: 'Ok',
         });
     }
@@ -199,7 +199,7 @@ const todaysInfo = () => {
             title: currentDay(),
             html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
             icon: 'info',
-            footer: 'Пары начнутся в ' + arrivingTime,
+            footer: 'Начало: ' + arrivingTime + "<br> Конец: " + endTime,
             confirmButtonText: 'Ok',
         });
     }
