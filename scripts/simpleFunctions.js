@@ -1,3 +1,6 @@
+let burgerIsOpened = false
+let scheduleIsOpened = false
+
 const alertOnMonday = () => {
     if (currentDay() == "Понедельник"){
         Swal.fire({
@@ -55,6 +58,8 @@ const fillSchedule = () => {
     parentElement.classList.toggle("visible")
     parentElement.classList.toggle("invisible")
     parentElement.classList.toggle("show");
+    let content  = document.getElementById("dynamicHeight")
+    content.classList.toggle("height")
     parentElement.innerHTML = "";
 
     for (let day in schedule) {
@@ -74,3 +79,29 @@ const fillSchedule = () => {
         }
     }
 }
+
+const hamburgerMenu = () => {
+    var btn = document.getElementById("hamburgerMenu")
+    btn.classList.toggle("dropdown-content")
+    btn.classList.toggle("hamburger")
+}
+
+let isAnimating = false;
+
+const changeColor = () => {
+    if (!isAnimating) {
+        isAnimating = true;
+
+        var fire = document.getElementById("fire");
+        fire.classList.toggle("fill-green-400");
+        fire.classList.toggle("fill-cyan-400");
+        fire.classList.toggle("fire-shake");
+
+        setTimeout(() => {
+            fire.classList.remove("fire-shake");
+            isAnimating = false;
+        }, 1000); // 1000 миллисекунд = 1 секунда, укажите длительность вашей анимации
+    }
+}
+var fire = document.getElementById("fire");
+fire.addEventListener("click", changeColor);
