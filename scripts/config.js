@@ -35,3 +35,35 @@ const schedule = {
         "five": "[14:20] -"
     }
 }
+
+let students = [
+    { Name: "Бенцлер Игнат", groupNumber: "1" },
+    { Name: "Биктимирова Азалия", groupNumber: "1" },
+    { Name: "Данилин Артём", groupNumber: "1" },
+    { Name: "Демидов Михаил", groupNumber: "2" },
+    { Name: "Дёмин Данил", groupNumber: "1" },
+    { Name: "Дмитриенко Данил", groupNumber: "2" },
+    { Name: "Дурасов Кирилл", groupNumber: "1" },
+    { Name: "Егоров Арсений", groupNumber: "1" },
+    { Name: "Елисеев Никита", groupNumber: "1" },
+    { Name: "Иванов Юрий", groupNumber: "1" },
+    { Name: "Кабирова Аделина", groupNumber: "2" },
+    { Name: "Казанцев Максим", groupNumber: "1" },
+    { Name: "Кузуб Александр", groupNumber: "2" },
+    { Name: "Ларин Никита", groupNumber: "1" },
+    { Name: "Лотошко Никита", groupNumber: "2" },
+    { Name: "Макаров Денис", groupNumber: "1" },
+    { Name: "Морозов Руслан", groupNumber: "1" },
+    { Name: "Мороков Олег", groupNumber: "1" },
+    { Name: "Осетров Руслан", groupNumber: "1" },
+    { Name: "Осиловский Дмитрий", groupNumber: "2" },
+    { Name: "Полецкий Александр", groupNumber: "2" },
+    { Name: "Семухин Владислав", groupNumber: "2" },
+    { Name: "Сидельников Дмитрий", groupNumber: "1" },
+    { Name: "Скударнов Артём", groupNumber: "1" },
+    { Name: "Халилов Рафаэль", groupNumber: "1" },
+    { Name: "Шарипов Платон", groupNumber: "2" },
+    { Name: "Шумаков Владимир", groupNumber: "2" },
+    { Name: "Юн Максим", groupNumber: "1" },
+
+];

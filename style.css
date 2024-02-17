@@ -21,7 +21,10 @@ button {
     transform: translateY(-2px); /* Смещаем кнопку вверх на 2 пикселя */
   }
 
-
+.camera{
+  position: absolute;
+  top: 68px;
+}
 /* Стили для выпадающего меню */
 .dropdown-content {
     display: none;

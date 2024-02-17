@@ -198,15 +198,6 @@ const todaysInfo = () => {
           })
     }
 }
-const groupList = () => {
-    
-    Swal.fire({
-        title: "Ошибка!",
-        html: 'Функция в разработке, чуть позже сделаю',
-        icon: 'error',
-        confirmButtonText: 'OK',
-    });
-}
 
 alertOnMonday()
 
