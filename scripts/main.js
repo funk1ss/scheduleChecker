@@ -1,3 +1,4 @@
+
 const nextDayInfo = () => {
     let nextDay
     let arrivingTime
@@ -198,6 +199,7 @@ const todaysInfo = () => {
     }
 }
 const groupList = () => {
+    
     Swal.fire({
         title: "Ошибка!",
         html: 'Функция в разработке, чуть позже сделаю',

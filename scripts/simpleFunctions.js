@@ -1,5 +1,6 @@
 let burgerIsOpened = false
 let scheduleIsOpened = false
+let isAnimating = false;
 
 const alertOnMonday = () => {
     if (currentDay() == "Понедельник"){
@@ -58,6 +59,7 @@ const fillSchedule = () => {
     parentElement.classList.toggle("visible")
     parentElement.classList.toggle("invisible")
     parentElement.classList.toggle("show");
+    parentElement.style.display = "block"
     let content  = document.getElementById("dynamicHeight")
     content.classList.toggle("height")
     parentElement.innerHTML = "";
@@ -86,7 +88,7 @@ const hamburgerMenu = () => {
     btn.classList.toggle("hamburger")
 }
 
-let isAnimating = false;
+
 
 const changeColor = () => {
     if (!isAnimating) {
@@ -103,5 +105,6 @@ const changeColor = () => {
         }, 1000); // 1000 миллисекунд = 1 секунда, укажите длительность вашей анимации
     }
 }
+
 var fire = document.getElementById("fire");
 fire.addEventListener("click", changeColor);
