@@ -90,6 +90,8 @@ const nextDayInfo = () => {
     let arrivingTime
     let endTime
     const today = new Date();
+    today.setDate(today.getDate() + 1); // Прибавляем один день
+
     switch (currentDay()) {
         case "Понедельник":
             nextDay = "Вторник"
