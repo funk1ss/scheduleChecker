@@ -9,6 +9,7 @@ const nextDayInfo = () => {
     let nextDayObj = {
         "Понедельник": "Вторник",
         "Вторник": "Среда",
+        "Среда": "Четверг",
         "Четверг": "Пятница",
         "Пятница": "Суббота",
         "Суббота": "Воскресенье",
@@ -18,7 +19,7 @@ const nextDayInfo = () => {
     let currentSchedule = schedule[nextDay]
     let subjectsList = []
     let counter = 0
-
+    console.log(schedule[nextDay])
 
     for (let item in currentSchedule){
         counter++
@@ -28,7 +29,7 @@ const nextDayInfo = () => {
     if (nextDay == "Суббота" || nextDay == "Воскресенье"){
         arrivingTime = "-"
     }
-    
+
     else if (!schedule[nextDay].one.includes("-")){
         arrivingTime = "8:00"
     }
@@ -44,7 +45,7 @@ const nextDayInfo = () => {
 
 
     if (nextDay == "Суббота" || nextDay == "Воскресенье"){
-        arrivingTime = "-"
+        endTime = "-"
     }
     else if (schedule[nextDay].four.includes("-")){
         endTime = "12:20"
