@@ -77,7 +77,7 @@ const nextDayInfo = () => {
         });
     
         Swal.fire({
-            title: currentDay(),
+            title: nextDay,
             html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
             icon: 'info',
             footer: 'ДЕНЬ ПРАКТИКИ' + '<br>Начало: ' +'['+ arrivingTime +'] '+ determineWeek(today) +' [11:00] 2 группа'+ "<br> Конец: " + endTime ,
