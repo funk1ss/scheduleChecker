@@ -40,6 +40,7 @@ let students = [
     { Name: "Белозубов Данил", groupNumber: "2" },
     { Name: "Бенцлер Игнат", groupNumber: "1" },
     { Name: "Биктимирова Азалия", groupNumber: "1" },
+    { Name: "Гутов Кирилл", groupNumber: "1" },
     { Name: "Данилин Артём", groupNumber: "1" },
     { Name: "Демидов Михаил", groupNumber: "2" },
     { Name: "Дёмин Данил", groupNumber: "1" },

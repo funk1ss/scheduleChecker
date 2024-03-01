@@ -163,34 +163,6 @@ const todaysInfo = () => {
         });
     }
 
-    else if (currentDay() == "Понедельник" && determineWeek(today) == "1 группа") {
-        let formattedSubjects = subjectsList.map(subject => {
-            return subject.replace(/\[(.*?)\]/g, '<span class="text-green-500">[$1]</span>');
-        });
-    
-        Swal.fire({
-            title: currentDay(),
-            html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
-            icon: 'info',
-            footer: 'ДЕНЬ ПРАКТИКИ' + '<br>Начало: ' +'['+ arrivingTime +'] '+ determineWeek(today) +' [11:00] 2 группа'+ "<br> Конец: " + endTime ,
-            confirmButtonText: 'OK',
-        });
-    }
-
-    else if (currentDay() == "Понедельник" && determineWeek(today) == "2 группа") {
-        let formattedSubjects = subjectsList.map(subject => {
-            return subject.replace(/\[(.*?)\]/g, '<span class="text-green-500">[$1]</span>');
-        });
-    
-        Swal.fire({
-            title: currentDay(),
-            html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
-            icon: 'info',
-            footer: 'ДЕНЬ ПРАКТИКИ' + '<br>Начало: ' +'['+ arrivingTime +'] '+ determineWeek(today) +' [11:00] 1 группа'+ "<br> Конец: " + endTime ,
-            confirmButtonText: 'OK',
-        });
-    }
-
     else{
         Swal.fire({
             title: currentDay(),
@@ -200,6 +172,6 @@ const todaysInfo = () => {
     }
 }
 
-alertOnMonday()
+
 
 
