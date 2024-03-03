@@ -58,7 +58,7 @@ const nextDayInfo = () => {
     }
     
 
-    if ((nextDay != "Суббота" && nextDay != "Воскресенье") && nextDay != "Понедельник") {
+    if ((nextDay != "Суббота" && nextDay != "Воскресенье")) {
         let formattedSubjects = subjectsList.map(subject => {
             return subject.replace(/\[(.*?)\]/g, '<span class="text-green-500">[$1]</span>');
         });
@@ -68,33 +68,6 @@ const nextDayInfo = () => {
             html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
             icon: 'info',
             footer: 'Начало: ' + arrivingTime + "<br> Конец: " + endTime,
-            confirmButtonText: 'OK',
-        });
-    }
-    else if (nextDay == "Понедельник" && determineWeek(today) == "1 группа") {
-        let formattedSubjects = subjectsList.map(subject => {
-            return subject.replace(/\[(.*?)\]/g, '<span class="text-green-500">[$1]</span>');
-        });
-    
-        Swal.fire({
-            title: nextDay,
-            html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
-            icon: 'info',
-            footer: 'ДЕНЬ ПРАКТИКИ' + '<br>Начало: ' +'['+ arrivingTime +'] '+ determineWeek(today) +' [11:00] 2 группа'+ "<br> Конец: " + endTime ,
-            confirmButtonText: 'OK',
-        });
-    }
-
-    else if (nextDay == "Понедельник" && determineWeek(today) == "2 группа") {
-        let formattedSubjects = subjectsList.map(subject => {
-            return subject.replace(/\[(.*?)\]/g, '<span class="text-green-500">[$1]</span>');
-        });
-    
-        Swal.fire({
-            title: nextDay,
-            html: '<div class="text-left">' + formattedSubjects.join("<br>") + '</div>',
-            icon: 'info',
-            footer: 'ДЕНЬ ПРАКТИКИ' + '<br>Начало: ' +'['+ arrivingTime +'] '+ determineWeek(today) +' [11:00] 1 группа'+ "<br> Конец: " + endTime ,
             confirmButtonText: 'OK',
         });
     }
