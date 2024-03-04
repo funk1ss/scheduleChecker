@@ -122,7 +122,7 @@ const todaysInfo = () => {
         endTime = "15:40"
     }
 
-    if ((currentDay() != "Суббота" && currentDay() != "Воскресенье") && currentDay() != "Понедельник") {
+    if ((currentDay() != "Суббота" && currentDay() != "Воскресенье")) {
         let formattedSubjects = subjectsList.map(subject => {
             return subject.replace(/\[(.*?)\]/g, '<span class="text-green-500">[$1]</span>');
         });
